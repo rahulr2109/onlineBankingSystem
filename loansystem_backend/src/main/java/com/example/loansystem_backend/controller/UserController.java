@@ -20,7 +20,8 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<String> login(@RequestParam String username,@RequestParam String pwd) {
+    public ResponseEntity<String> login(@RequestParam String username, @RequestParam String pwd) {
+        System.out.println("Username: " + username + " Password: " + pwd);
         User foundUser = userService.findByUsername(username);
         if (foundUser != null && userService.checkPassword(foundUser, pwd)) {
             return ResponseEntity.ok("Login successful");
