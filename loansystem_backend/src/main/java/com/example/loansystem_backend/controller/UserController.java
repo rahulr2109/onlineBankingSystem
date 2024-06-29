@@ -46,9 +46,16 @@ public class UserController {
     }
 
     @PostMapping("/login")
+<<<<<<< HEAD
     public ResponseEntity<String> login(@RequestBody loginUser user) {
         User foundUser = userService.findByUsername(user.getUsername());
         if (foundUser != null && userService.checkPassword(foundUser, user.getPwd())) {
+=======
+    public ResponseEntity<String> login(@RequestParam String username, @RequestParam String pwd) {
+        System.out.println("Username: " + username + " Password: " + pwd);
+        User foundUser = userService.findByUsername(username);
+        if (foundUser != null && userService.checkPassword(foundUser, pwd)) {
+>>>>>>> 5355fa76e088b0053bb6291cfdceaa11adbc925e
             return ResponseEntity.ok("Login successful");
         } else {
             return ResponseEntity.status(401).body("Invalid credentials");
