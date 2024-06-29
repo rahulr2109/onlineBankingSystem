@@ -6,6 +6,32 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+class loginUser{
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPwd() {
+        return pwd;
+    }
+
+    public void setPwd(String pwd) {
+        this.pwd = pwd;
+    }
+
+    public loginUser(String username, String pwd) {
+        this.username = username;
+        this.pwd = pwd;
+    }
+
+    String username;
+    String pwd;
+}
+
 @RestController
 @RequestMapping("/api")
 public class UserController {
@@ -20,9 +46,9 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<String> login(@RequestParam String username,@RequestParam String pwd) {
-        User foundUser = userService.findByUsername(username);
-        if (foundUser != null && userService.checkPassword(foundUser, pwd)) {
+    public ResponseEntity<String> login(@RequestBody loginUser user) {
+        User foundUser = userService.findByUsername(user.getUsername());
+        if (foundUser != null && userService.checkPassword(foundUser, user.getPwd())) {
             return ResponseEntity.ok("Login successful");
         } else {
             return ResponseEntity.status(401).body("Invalid credentials");

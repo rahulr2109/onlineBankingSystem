@@ -16,22 +16,22 @@ public class AdminController {
     @Autowired
     private UserController userController; // Inject UserController to reuse login functionality
 
-    @PostMapping("/admin/addLoanOfficer")
-    public ResponseEntity<String> addLoanOfficer(@RequestBody User loanOfficer, @RequestParam("username") String username) {
-        if (!isAdmin(username)) {
-            return ResponseEntity.status(403).body("Unauthorized");
-        }
-        loanOfficer.setRole("LO");
-        User registeredUser = userService.register(loanOfficer);
-        return ResponseEntity.ok("Officer added sucessfully");
-    }
-
-    private boolean isAdmin(String username) {
-        // Retrieve user from database based on username
-        User user = userService.findByUsername(username);
-        // Check if user exists and has admin role
-        return user != null && "AO".equals(user.getRole());
-    }
+//    @PostMapping("/admin/addLoanOfficer")
+//    public ResponseEntity<String> addLoanOfficer(@RequestBody User loanOfficer, @RequestParam("username") String username) {
+//        if (!isAdmin(username)) {
+//            return ResponseEntity.status(403).body("Unauthorized");
+//        }
+//        loanOfficer.setRole("LO");
+//        User registeredUser = userService.register(loanOfficer);
+//        return ResponseEntity.ok("Officer added sucessfully");
+//    }
+//
+//    private boolean isAdmin(String username) {
+//        // Retrieve user from database based on username
+//        User user = userService.findByUsername(username);
+//        // Check if user exists and has admin role
+//        return user != null && "AO".equals(user.getRole());
+//    }
 
     // Other admin-related endpoints
 }

@@ -8,17 +8,24 @@ import java.util.Date;
 public class Loan {
     @Id
     private String id;
-    private String customerId;
+    private String username;
     private double amount;
     private String status;
-    private Date createdAt;
+    private String createdAt;
 
-    public String getCustomerId() {
-        return customerId;
+    private String loanType;
+    private String reason;
+
+    public String getId() {
+        return id;
     }
 
-    public void setCustomerId(String customerId) {
-        this.customerId = customerId;
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public double getAmount() {
@@ -37,18 +44,37 @@ public class Loan {
         this.status = status;
     }
 
-    public Date getCreatedAt() {
+    public String getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(Date createdAt) {
+    public void setCreatedAt(String createdAt) {
         this.createdAt = createdAt;
     }
 
-    public Loan(String customerId, double amount, String status, Date createdAt) {
-        this.customerId = customerId;
+    public String getLoanType() {
+        return loanType;
+    }
+
+    public void setLoanType(String loanType) {
+        this.loanType = loanType;
+    }
+
+    public String getReason() {
+        return reason;
+    }
+
+    public void setReason(String reason) {
+        this.reason = reason;
+    }
+
+    public Loan(String username, double amount, String loanType, String reason) {
+        this.username = username;
         this.amount = amount;
-        this.status = status;
-        this.createdAt = createdAt;
+        this.status = "Pending";
+        Date date = new java.util.Date();
+        this.createdAt = date.toString();
+        this.loanType = loanType;
+        this.reason = reason;
     }
 }
