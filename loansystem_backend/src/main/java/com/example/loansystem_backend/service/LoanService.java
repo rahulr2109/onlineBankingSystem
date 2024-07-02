@@ -34,6 +34,14 @@ public class LoanService {
         return loanRepository.findByUsername(Username);
     }
 
+    public List<Loan> getAllLoanRequest() {
+        return loanRepository.findAll();
+    }
+
+    public List<Loan> getAllPendingLoans(String status) {
+        return loanRepository.findByStatus(status);
+    }
+
     public Loan changeLoanStatus(String Id, String status) {
         Optional<Loan> optionalLoan = loanRepository.findById(Id);
         if (optionalLoan.isPresent()) {
