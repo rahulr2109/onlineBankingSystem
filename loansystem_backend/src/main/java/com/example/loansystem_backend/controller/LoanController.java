@@ -40,4 +40,10 @@ public class LoanController {
         Loan updatedLoan = loanService.changeLoanStatus(id, status);
         return ResponseEntity.ok(updatedLoan);
     }
+
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<String> deleteLoan(@PathVariable String id){
+        loanService.deleteLoan(id);
+        return ResponseEntity.ok("Loan request deleted successfully");
+    }
 }
