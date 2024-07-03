@@ -21,8 +21,8 @@ const AdminDashboard = () => {
     setRejectedLoans(response.data.filter(loan => loan.status === 'rejected'));
   };
 
-  const updateLoanStatus = async (id, status) => {
-    await axios.put(`http://localhost:8080/api/loans/${id}`, { status });
+  const updateLoanStatus = async (id, loan) => {
+    await axios.put(`http://localhost:8080/api/loans/${id}`, loan);
     fetchLoans();
   };
 

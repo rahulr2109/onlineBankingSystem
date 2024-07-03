@@ -20,12 +20,12 @@ const LoanList = ({ loans, setLoan, deleteLoan }) => {
                 <td className="px-4 py-2">{loan.amount}</td>
                 <td className="px-4 py-2">{loan.reason}</td>
                 <td className="px-4 py-2">
-                  <button
+                  {/* <button
                     onClick={() => setLoan(loan)}
                     className="bg-blue-500 text-white px-4 py-1 rounded-md mr-2 hover:bg-blue-700"
                   >
                     Edit
-                  </button>
+                  </button> */}
                   <button
                     onClick={() => deleteLoan(loan.id)}
                     className="bg-red-500 text-white px-4 py-1 rounded-md hover:bg-red-700"
@@ -35,7 +35,7 @@ const LoanList = ({ loans, setLoan, deleteLoan }) => {
                   <span
                     className="bg-blue-500 text-white px-4 py-1 rounded-md mr-2 hover:bg-blue-700"
                   >
-                    Pending!
+                    {loan.status}
                   </span>
                 </td>
               </tr>

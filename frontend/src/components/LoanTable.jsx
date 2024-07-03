@@ -22,13 +22,13 @@ const LoanTable = ({ loans, updateLoanStatus, readOnly }) => {
                 {!readOnly && (
                   <td className="px-4 py-2">
                     <button
-                      onClick={() => updateLoanStatus(loan.id, 'approved')}
+                      onClick={() => updateLoanStatus(loan.id, {...loan,  status:'approved' })}
                       className="bg-green-500 text-white px-4 py-1 rounded-md mr-2 hover:bg-green-700"
                     >
                       Approve
                     </button>
                     <button
-                      onClick={() => updateLoanStatus(loan.id, 'rejected')}
+                      onClick={() => updateLoanStatus(loan.id, { ...loan, status:'rejected'})}
                       className="bg-red-500 text-white px-4 py-1 rounded-md hover:bg-red-700"
                     >
                       Reject

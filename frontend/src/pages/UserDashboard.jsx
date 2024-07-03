@@ -8,7 +8,7 @@ const UserDashboard = () => {
   const [loan, setLoan] = useState(null);
 
   useEffect(() => {
-    fetchLoans();
+    fetchLoans(); 
   }, []);
 
   const fetchLoans = async () => {
