@@ -40,4 +40,22 @@ public class LoanController {
         Loan updatedLoan = loanService.changeLoanStatus(id, status);
         return ResponseEntity.ok(updatedLoan);
     }
+
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<String> deleteLoan(@PathVariable String id){
+        loanService.deleteLoan(id);
+        return ResponseEntity.ok("Loan request deleted successfully");
+    }
+
+    @GetMapping("/index")
+    public ResponseEntity<List<Loan>> getAllLoanRequest(){
+        List<Loan> allLoans = loanService.getAllLoanRequest();
+        return ResponseEntity.ok(allLoans);
+    }
+
+    @GetMapping("/{status}")
+    public ResponseEntity<List<Loan>> getAllPendingLoans(@PathVariable String status){
+        List<Loan> allPendingLoans = loanService.getAllPendingLoans(status);
+        return ResponseEntity.ok(allPendingLoans);
+    }
 }
